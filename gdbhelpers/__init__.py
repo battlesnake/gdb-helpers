@@ -16,6 +16,7 @@ import gdbhelpers.preattach
 import gdbhelpers.python
 import gdbhelpers.emacs
 import gdbhelpers.colorize
+import gdbhelpers.remove_prefix
 
 # These are cases where gdb's default ought to change.
 import gdb
