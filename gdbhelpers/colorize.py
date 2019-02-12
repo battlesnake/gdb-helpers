@@ -106,11 +106,11 @@ class ColorDecorator(FrameDecorator):
 		self._fobj = fobj
 
 	def function(self):
-		std = ["std", "__gnu_cxx"]
+		std = ["std::", "__gnu_cxx", "__cxx"]
 		name = self._fobj.function()
 		name = re.sub(r'std::__cxx\d+::', 'std::', name)
 		name = re.sub(r'std::basic_string<char, std::char_traits<char>, std::allocator<char> >', 'std::string', name)
-		if [1 for x in std if name.startswith(x + "::")]:
+		if [1 for x in std if name.startswith(x)]:
 			name = re.sub(r'(\w+)(?=[<\[\(])', '\x1b[1m\\1\x1b[22m', name)
 			name = re.sub(r'\)::(\w+)', ')::\x1b[1m\\1\x1b[22m', name)
 			name = re.sub(r'([<(,)>])', '\x1b[1m\\1\x1b[22m', name)
